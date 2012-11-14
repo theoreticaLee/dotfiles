@@ -1,0 +1,22 @@
+-hR .php
+--verbose=no
+--recurse=yes
+--tag-relative=yes
+--languages=PHP
+--regex-PHP=/abstract\s+class\s+([^ ]+)/\1/c/
+--regex-PHP=/interface\s+([^ ]+)/\1/c/
+--regex-PHP=/(public\s+|static\s+|protected\s+|private\s+)\$([^     =]+)/\2/p/
+--regex-PHP=/final\s+(public\s+|static\s+|abstract\s+|protected\s+|private\s+)function\s+\&?\s*([^ (]+)/\2/f/
+--regex-PHP=/const\s+([^ 	=]+)/\1/d/
+--PHP-kinds=cfpd
+--fields=+aimSn
+--extra=+q
+--exclude=config/*
+--exclude=data/*
+--exclude=doc/*
+--exclude=log/*
+--exclude=nbproject/*
+--exclude=lib/vendor/*
+--exclude=web/*
+--exclude=test/*
+--exclude=*.js
