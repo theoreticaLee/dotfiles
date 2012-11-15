@@ -8,11 +8,8 @@ ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="minimal"
 ZSH_THEME="af-magic-two"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias santa='ssh lee@lee.citizennet.com'
-alias rack1='ssh lee@citizennet.com'
+# include aliases
+source $HOME/.shellaliases.sh
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -35,6 +32,11 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(git osx ruby python ant gem cap macports phing redis-cli screen ssh-agent symfony2 symfony)
 
 source $ZSH/oh-my-zsh.sh
+
+# speed up git tab autocomplete
+__git_files () {
+    _wanted files expl ‘local files’ _files
+}
 
 # Customize to your needs...
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/git/bin/

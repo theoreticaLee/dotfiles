@@ -1,42 +1,27 @@
 # Lee's Dotfiles
 
 ## Prerequisites
+* OS X or Linux
 * ZSH
 * Vim
 
 ## Installation
 
-Clone and install files. **warning this will overwrite your existing dotfiles**
+Clone and install files. **warning this will replace your existing dotfiles**
 
+###Quick Install
+
+Install Core
 ```bash
-git clone https://github.com/theoreticaLee/dotfiles.git
-cd dotfiles
-git submodule init
-git submodule update
-rm -rf .git
-rm .gitmodules
-cp -a .* ~
+curl -L https://github.com/theoreticaLee/dotfiles/raw/master/build.sh | zsh
 ```
 
-Register your global gitignore file
-
+Post Core Install: Install Vim Bundles
 ```bash
-git config --global core.excludesfile ~/.gitignore_global
+vim -c :BundleInstall
 ```
 
-Reload your zsh runtime config
-
+Post Core Install #2: PIV bug fix
 ```bash
-source ~/.zshrc
-```
-
-Setup Vundle
-
-```bash
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-```
-
-In vim you will have to
-```bash
-:BundleInstall
+echo "let b:current_syntax='html'" > ~/.vim/bundle/PIV/syntax/html.vim
 ```
