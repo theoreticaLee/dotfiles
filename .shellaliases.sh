@@ -18,6 +18,10 @@ alias gco='git checkout'
 alias gb='git branch'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
+alias gw='git whatchanged'
+alias gr='git rebase'
+alias gt='git tag'
+alias gg='git grep -in'
 
 # cross platform way to get your externally visible ip, even behind a router
 alias ipme='curl ifconfig.me/ip'
