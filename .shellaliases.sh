@@ -28,3 +28,6 @@ alias ipme='curl ifconfig.me/ip'
 
 # vim open the files found relative to this directory
 vo() { find . -name "$1" -exec vim '{}' +; }
+
+# start up webserver
+alias server='open http://localhost:8000 && python -m SimpleHTTPServer'
