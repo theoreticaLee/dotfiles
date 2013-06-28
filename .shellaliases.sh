@@ -22,6 +22,7 @@ alias gw='git whatchanged'
 alias gr='git rebase'
 alias gt='git tag'
 alias gg='git grep -in'
+alias grr='git reset --hard HEAD && git clean -d -f .'
 
 # cross platform way to get your externally visible ip, even behind a router
 alias ipme='curl ifconfig.me/ip'
@@ -31,3 +32,9 @@ vo() { find . -name "$1" -exec vim '{}' +; }
 
 # start up webserver
 alias server='open http://localhost:8000 && python -m SimpleHTTPServer'
+
+symfonyrebuild() {
+  grr
+  gl
+  build/santamonica_build.sh
+}
