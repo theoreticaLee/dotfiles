@@ -33,11 +33,6 @@ plugins=(git osx ruby python gem cap brew screen ssh-agent symfony composer bowe
 
 source $ZSH/oh-my-zsh.sh
 
-# speed up git tab autocomplete
-__git_files () {
-    _wanted files expl ‘local files’ _files
-}
-
 # Customize to your needs...
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/git/bin/
 
