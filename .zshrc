@@ -41,8 +41,7 @@ __git_files () {
 # Customize to your needs...
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/git/bin/
 
-# macports
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export PATH=/opt/local/lib/php/pear/bin:$PATH
+# javascript REPL
+export PATH=/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/:$PATH
 
 export IRCSERVER="irc.freenode.net"
