@@ -39,4 +39,7 @@ git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 echo "Registering Global Gitignore..."
 git config --global core.excludesfile $HOME/.gitignore_global
 
+echo "Setting Zsh as default shell..."
+chsh -s /bin/zsh
+
 echo "Done! Restart your shell for the changes to take effect."
