@@ -1,8 +1,11 @@
 #!/bin/bash
 
+RACK1_SERVER='citizennet.com'
+SANTA_SERVER='lee.citizennet.com'
+
 # for ssh
-alias santa='ssh lee@lee.citizennet.com'
-alias rack1='ssh lee@citizennet.com'
+alias santa='ssh lee@$SANTA_SERVER'
+alias rack1='ssh lee@$RACK1_SERVER'
 
 # pretty print json
 alias json='python -mjson.tool'
@@ -32,6 +35,9 @@ vo() { find . -name "$1" -exec vim '{}' +; }
 
 # start up webserver
 alias server='open http://localhost:8000 && python -m SimpleHTTPServer'
+
+# setup a SOCKS5 proxy
+alias setupProxy='ssh -C2qTnN -D 8080 lee@$SANTA_SERVER'
 
 symfonyrebuild() {
   grr
