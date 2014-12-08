@@ -34,7 +34,7 @@ alias ipme='curl ifconfig.me/ip'
 vo() { find . -name "$1" -exec vim '{}' +; }
 
 # start up webserver
-alias server='open http://localhost:8000 && python -m SimpleHTTPServer'
+alias server='open http://localhost:8000 && php -S localhost:8000'
 
 # setup a SOCKS5 proxy
 alias setupProxy='ssh -C2qTnN -D 8080 lee@$SANTA_SERVER'
