@@ -44,3 +44,7 @@ symfonyrebuild() {
   gl
   build/santamonica_build.sh
 }
+
+whitelistme() {
+  sudo iptables -A INPUT -s $(w -h | grep $USER | awk '{print $3}') -j ACCEPT	
+}
