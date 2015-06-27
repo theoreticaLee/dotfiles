@@ -1,11 +1,11 @@
 #!/bin/bash
 
 RACK1_SERVER='citizennet.com'
-SANTA_SERVER='lee.citizennet.com'
+SANTA_SERVER='$USER.citizennet.com'
 
 # for ssh
-alias santa='ssh lee@$SANTA_SERVER'
-alias rack1='ssh lee@$RACK1_SERVER'
+alias santa='ssh $USER@$SANTA_SERVER'
+alias rack1='ssh $USER@$RACK1_SERVER'
 
 # pretty print json
 alias json='python -mjson.tool'
