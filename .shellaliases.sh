@@ -46,5 +46,5 @@ symfonyrebuild() {
 }
 
 whitelistme() {
-  sudo iptables -A INPUT -s $(w -h | grep $USER | awk '{print $3}') -j ACCEPT	
+  sudo iptables -I INPUT -s $(w -h | grep $USER | awk '{print $3}') -j ACCEPT	
 }
