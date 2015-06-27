@@ -45,6 +45,10 @@ symfonyrebuild() {
   build/santamonica_build.sh
 }
 
+# adds your user's remote IP address to an iptables temporary allow list
+# Additional notes:
+# - upon iptables flush, the rule will be lost
+# - it grabs the ip address of the last time you have logged in
 whitelistme() {
-  sudo iptables -I INPUT -s $(w -h | grep $USER | awk '{print $3}') -j ACCEPT	
+  sudo iptables -I INPUT -s $(w -h | grep $USER | tail -1 | awk '{print $3}') -j ACCEPT	
 }
