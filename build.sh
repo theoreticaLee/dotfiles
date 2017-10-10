@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # files to install
-files=(".ctags" ".gitconfig" ".gitignore_global" ".vim" ".vimrc" ".zshrc" ".oh-my-zsh" ".shellaliases.sh")
+files=(".ctags" ".gitconfig" ".gitignore_global" ".vim" ".vimrc" ".shellaliases.sh")
 
 echo "Using $HOME as home"
 
@@ -38,8 +38,5 @@ git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 
 echo "Registering Global Gitignore..."
 git config --global core.excludesfile $HOME/.gitignore_global
-
-echo "Setting Zsh as default shell..."
-chsh -s /bin/zsh
 
 echo "Done! Restart your shell for the changes to take effect."
