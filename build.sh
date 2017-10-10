@@ -23,6 +23,8 @@ git submodule init
 git submodule update
 
 cp $HOME/.bashrc $HOME/.bashrc_bak
+
+echo ''  >> $HOME/.bashrc
 echo 'plugins=(git osx ruby python gem cap brew screen ssh-agent symfony composer bower z)' >> $HOME/.bashrc
 echo 'export IRCSERVER="irc.freenode.net"' >> $HOME/.bashrc
 
