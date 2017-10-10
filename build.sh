@@ -22,6 +22,9 @@ echo "Installing submodules..."
 git submodule init
 git submodule update
 
+echo 'plugins=(git osx ruby python gem cap brew screen ssh-agent symfony composer bower z)' > $HOME/.bashrc
+echo 'export IRCSERVER="irc.freenode.net"' > $HOME/.bashrc
+
 echo "Backing up and installing files..."
 for file in ${files[@]}; do
   if [ -f "$HOME/$file" ] || [ -d "$HOME/$file" ]; then
