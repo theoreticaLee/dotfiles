@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # files to install
-files=(".ctags" ".gitconfig" ".gitignore_global" ".vim" ".vimrc" ".shellaliases.sh")
+files=(".ctags" ".gitconfig" ".gitignore_global" ".vim" ".vimrc" ".bash_aliases.sh")
 
 echo "Using $HOME as home"
 
