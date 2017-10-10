@@ -2,7 +2,6 @@
 
 ## Prerequisites
 * OS X or Linux
-* ZSH
 * Vim
 
 ## Installation
