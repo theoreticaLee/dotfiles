@@ -12,7 +12,7 @@ Clone and install files. **warning this will replace your existing dotfiles**
 
 Install Core
 ```bash
-curl -L https://github.com/theoreticaLee/dotfiles/raw/master/build.sh | zsh
+bash <(curl -s https://github.com/theoreticaLee/dotfiles/raw/master/build.sh)
 ```
 
 Post Core Install: Install Vim Bundles
