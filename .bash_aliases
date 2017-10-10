@@ -1,5 +1,3 @@
-#!/bin/bash
-
 RACK1_SERVER='citizennet.com'
 SANTA_SERVER='$USER.citizennet.com'
 
