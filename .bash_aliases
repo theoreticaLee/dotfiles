@@ -30,5 +30,5 @@ whitelistme() {
 }
 
 function kc {
-	kubectl -n nonprod "$@"
+  kubectl -n nonprod "$@"
 }
