@@ -29,6 +29,10 @@ whitelistme() {
   sudo iptables -I INPUT -s $(w -h | grep $USER | tail -1 | awk '{print $3}') -j ACCEPT	
 }
 
-function kc {
-  kubectl -n nonprod "$@"
+function kc() {
+  kubectl -n nonprod $*
+}
+
+function hc() {
+  helm --tiller-namespace nonprod $*
 }
