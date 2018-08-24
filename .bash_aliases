@@ -29,10 +29,23 @@ whitelistme() {
   sudo iptables -I INPUT -s $(w -h | grep $USER | tail -1 | awk '{print $3}') -j ACCEPT	
 }
 
+. <(helm completion bash)
+
+function eksprod() {
+  EKS_ENV="production"
+  export KUBECONFIG=~/.kube/config-citizennet
+}
+
+function eksnonprod() {
+  EKS_ENV="nonprod"
+  export KUBECONFIG=~/.kube/config-citizennet-nonprod
+}
+
 function kc() {
-  kubectl -n nonprod $*
+  kubectl -n $EKS_ENV $*
 }
 
 function hc() {
-  helm --tiller-namespace nonprod $*
+  helm --tiller-namespace $EKS_ENV $*
 }
+
