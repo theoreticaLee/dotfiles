@@ -41,11 +41,11 @@ function eksnonprod() {
   export KUBECONFIG=~/.kube/config-citizennet-nonprod
 }
 
-function kc() {
+function k() {
   kubectl -n $EKS_ENV $*
 }
 
-function hc() {
+function h() {
   helm --tiller-namespace $EKS_ENV $*
 }
 
