@@ -45,6 +45,10 @@ function k() {
   kubectl -n $EKS_ENV $*
 }
 
+function kit() {
+  k exec -it $1 /bin/bash
+}
+
 function h() {
   helm --tiller-namespace $EKS_ENV $*
 }
