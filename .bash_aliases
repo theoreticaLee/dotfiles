@@ -34,11 +34,13 @@ whitelistme() {
 function eksprod() {
   EKS_ENV="production"
   export KUBECONFIG=~/.kube/config-citizennet
+  echo "Setting up EKS env:" $EKS_ENV
 }
 
 function eksnonprod() {
   EKS_ENV="nonprod"
   export KUBECONFIG=~/.kube/config-citizennet-nonprod
+  echo "Setting up EKS env:" $EKS_ENV
 }
 
 function k() {
