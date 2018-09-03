@@ -64,14 +64,14 @@ function kit1() {
   fi
 }
 
-function nodeUsage() {
+function eksUsage() {
   for node in $(k get nodes -o=name); do
     USAGE=$(k describe "$node" | grep -4 "Allocated resources:" | tail -1)
     echo "${node}:" $USAGE
   done
 }
 
-function findOOM() {
+function eksOOMPods() {
   k get pods | grep OOM | sort -k 3
 }
 
