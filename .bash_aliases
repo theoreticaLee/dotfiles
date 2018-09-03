@@ -51,6 +51,19 @@ function kit() {
   k exec -it $1 /bin/bash
 }
 
+function kit1() {
+  POD=$(k get pods -o custom-columns=:metadata.name --field-selector=status.phase=Running | grep $1 | head -1)
+
+  if [ -z "$POD" ]
+  then
+    echo "Did not find pod "$
+  else
+    echo "Found pod:" $POD
+
+    kit $POD
+  fi
+}
+
 function nodeUsage() {
   for node in $(k get nodes -o=name); do
     USAGE=$(k describe "$node" | grep -4 "Allocated resources:" | tail -1)
