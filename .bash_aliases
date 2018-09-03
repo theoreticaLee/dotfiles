@@ -58,6 +58,10 @@ function nodeUsage() {
   done
 }
 
+function findOOM() {
+  k get pods | grep OOM | sort -k 3
+}
+
 function h() {
   helm --tiller-namespace $EKS_ENV $*
 }
