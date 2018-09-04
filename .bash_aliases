@@ -63,14 +63,24 @@ function kit() {
 function eksUsage() {
   echo "Node Name                          CPU Requests  CPU Limits   Memory Requests    Memory Limits"
   echo "---------------------------------- ------------  ----------   ---------------    -------------"
-  for node in $(k get nodes -o=name); do
+  NODES=$(k get nodes -o=name)
+  for node in $NODES; do
     USAGE=$(k describe "$node" | grep -4 "Allocated resources:" | tail -1)
     echo "${node}:" $USAGE
   done
+  echo "----------------------------------------------------------------------------------------------"
+  NODES=($NODES)
+  echo "Total Nodes:" ${#NODES[*]}
 }
 
 function eksOOMPods() {
   k get pods | grep OOM | sort -k 3
+}
+
+function eksKillNode() {
+  NODE=$1
+  k cordon "$NODE";
+  k drain --force --ignore-daemonsets --delete-local-data --grace-period=120 "$NODE";
 }
 
 function h() {
