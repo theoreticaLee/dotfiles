@@ -61,6 +61,8 @@ function kit() {
 }
 
 function eksUsage() {
+  echo "Node Name                          CPU Requests  CPU Limits   Memory Requests    Memory Limits"
+  echo "---------------------------------- ------------  ----------   ---------------    -------------"
   for node in $(k get nodes -o=name); do
     USAGE=$(k describe "$node" | grep -4 "Allocated resources:" | tail -1)
     echo "${node}:" $USAGE
