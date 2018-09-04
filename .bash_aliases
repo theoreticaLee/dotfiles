@@ -79,7 +79,6 @@ function eksOOMPods() {
 
 function eksKillNode() {
   NODE=$1
-  k cordon "$NODE";
   k drain --force --ignore-daemonsets --delete-local-data --grace-period=120 "$NODE";
 }
 
