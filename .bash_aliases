@@ -47,6 +47,10 @@ function k() {
   kubectl -n $EKS_ENV $*
 }
 
+function kFind() {
+  k get pods --field-selector=status.phase=Running | grep $1
+}
+
 function kit() {
   POD=$(k get pods -o custom-columns=:metadata.name --field-selector=status.phase=Running | grep $1 | head -1)
 
