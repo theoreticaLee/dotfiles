@@ -52,7 +52,7 @@ function kit() {
 
   if [ -z "$POD" ]
   then
-    echo "Did not find pod "$
+    echo "Did not find pod "$1
   else
     echo "Found pod:" $POD
 
