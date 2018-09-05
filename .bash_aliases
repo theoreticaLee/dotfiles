@@ -47,7 +47,7 @@ function k() {
   kubectl -n $EKS_ENV $*
 }
 
-function kFind() {
+function kfind() {
   k get pods --field-selector=status.phase=Running | grep $1
 }
 
