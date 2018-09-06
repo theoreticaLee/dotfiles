@@ -48,7 +48,7 @@ function k() {
 }
 
 function kfind() {
-  k get pods --field-selector=status.phase=Running | grep $1
+  k get pods | grep $1
 }
 
 function kit() {
