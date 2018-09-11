@@ -51,6 +51,10 @@ function kfind() {
   k get pods | grep $1
 }
 
+function kdesc() {
+  k describe $*
+}
+
 function kit() {
   POD=$(k get pods -o custom-columns=:metadata.name --field-selector=status.phase=Running | grep $1 | head -1)
 
