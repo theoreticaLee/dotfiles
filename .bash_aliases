@@ -90,7 +90,7 @@ function eksCheckPersistentCrons() {
   for cronjob in $CRONJOBS; do
     INUSE=$(kfind "${cronjob}-" | grep " Running " | wc -l)
     if [ "$INUSE" != "1" ]; then
-      echo $cronjob " not found" 
+      echo $cronjob "not found" 
     fi
   done	
 }
