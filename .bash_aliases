@@ -21,12 +21,9 @@ alias grr='git reset --hard HEAD && git clean -d -f .'
 # cross platform way to get your externally visible ip, even behind a router
 alias ipme='curl ifconfig.me/ip'
 
-# adds your user's remote IP address to an iptables temporary allow list
-# Additional notes:
-# - upon iptables flush, the rule will be lost
-# - it grabs the ip address of the last time you have logged in
-whitelistme() {
-  sudo iptables -I INPUT -s $(w -h | grep $USER | tail -1 | awk '{print $3}') -j ACCEPT	
+function updateBashAliases() {
+  curl https://raw.githubusercontent.com/theoreticaLee/dotfiles/master/.bash_aliases > ~/.bash_aliases
+  . ~/.bash_aliases
 }
 
 . <(helm completion bash)
