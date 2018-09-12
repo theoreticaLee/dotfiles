@@ -85,6 +85,19 @@ function eksOOMPods() {
   k get pods | grep OOM | sort -k 3
 }
 
+function eksCheckPersistentCrons() {
+	CRONJOBS=$(k get cronjobs | grep "persistent-" | awk '{print $1}')
+	CRONJOBSLIST=($CRONJOBS)
+	echo "Checking " ${#CRONJOBSLIST[*]} " Cron Jobs"
+
+	for cronjob in $CRONJOBS; do
+	  INUSE=$(kfind "${cronjob}-" | grep " Running " | wc -l)
+	  if [ "$INUSE" != "1" ]; then
+		echo $cronjob " not found" 
+	  fi
+	done	
+}
+
 function eksKillNode() {
   NODE=$1
   k drain --force --ignore-daemonsets --delete-local-data --grace-period=120 "$NODE";
