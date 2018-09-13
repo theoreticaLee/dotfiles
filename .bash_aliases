@@ -44,6 +44,26 @@ function k() {
   kubectl -n $EKS_ENV $*
 }
 
+_k_completions()
+{
+  COMPREPLY=()
+  local word="${COMP_WORDS[COMP_CWORD]}"
+  if [ "$COMP_CWORD" -eq 1 ]; then
+      COMPREPLY=($(compgen -W "log shell get delete" -- "$word"))
+  elif [ "$COMP_CWORD" -eq 2 ]; then
+      if [ ${COMP_WORDS[1]} == "delete" ]
+      then
+          COMPREPLY=($(compgen -W "pod" -- "${word}"))
+      else
+          COMPREPLY=($(compgen -W "$(k get pods | grep Running | awk '{print $1}')" -- "${word}"))
+      fi
+  elif [ "$COMP_CWORD" -eq 3 ]; then
+      COMPREPLY=($(compgen -W "$(k get pods | grep Running | awk '{print $1}')" -- "${word}"))
+  fi
+}
+
+complete -F _k_completions k
+
 function kfind() {
   k get pods | grep $1
 }
