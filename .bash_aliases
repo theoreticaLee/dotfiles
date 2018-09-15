@@ -110,7 +110,8 @@ function eksCheckPersistentCrons() {
   for cronjob in $CRONJOBS; do
     INUSE=$(kfind "${cronjob}-" | grep " Running " | wc -l)
     if [ "$INUSE" != "1" ]; then
-      echo $cronjob "not running" 
+      lastseen=$(kfind $cronjob | tail -1 | awk '{print $5}')
+      echo $cronjob "not running. last seen:" $lastseen "ago" 
     fi
   done	
 }
