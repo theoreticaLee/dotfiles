@@ -65,7 +65,7 @@ _k_completions()
 complete -F _k_completions k
 
 function kfind() {
-  k get pods | grep $1
+  k get pods --sort-by=.status.startTime | grep $1
 }
 
 function kdesc() {
