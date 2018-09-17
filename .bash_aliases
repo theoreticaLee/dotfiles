@@ -6,6 +6,7 @@ alias gl='git pull --prune'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gp='git push origin HEAD'
 alias gd='git diff'
+alias ga='git add'
 alias gc='git commit'
 alias gca='git commit -a'
 alias gco='git checkout'
@@ -28,22 +29,6 @@ function updateBashAliases() {
 
 . <(helm completion bash)
 
-function eksprod() {
-  EKS_ENV="production"
-  export KUBECONFIG=~/.kube/config-citizennet
-  echo "Setting up EKS env:" $EKS_ENV
-}
-
-function eksnonprod() {
-  EKS_ENV="nonprod"
-  export KUBECONFIG=~/.kube/config-citizennet-nonprod
-  echo "Setting up EKS env:" $EKS_ENV
-}
-
-function k() {
-  kubectl -n $EKS_ENV $*
-}
-
 _k_completions()
 {
   COMPREPLY=()
@@ -63,65 +48,3 @@ _k_completions()
 }
 
 complete -F _k_completions k
-
-function kfind() {
-  k get pods --sort-by=.status.startTime | grep $1
-}
-
-function kdesc() {
-  k describe $*
-}
-
-function kit() {
-  POD=$(k get pods -o custom-columns=:metadata.name --field-selector=status.phase=Running | grep $1 | head -1)
-
-  if [ -z "$POD" ]
-  then
-    echo "Did not find pod "$1
-  else
-    echo "Found pod:" $POD
-
-    k exec -it $POD /bin/bash
-  fi
-}
-
-function eksUsage() {
-  echo "Node Name                          CPU Requests  CPU Limits   Memory Requests    Memory Limits"
-  echo "---------------------------------- ------------  ----------   ---------------    -------------"
-  NODES=$(k get nodes -o=name)
-  for node in $NODES; do
-    USAGE=$(k describe "$node" | grep -4 "Allocated resources:" | tail -1)
-    echo "${node}:" $USAGE
-  done
-  echo "----------------------------------------------------------------------------------------------"
-  NODES=($NODES)
-  echo "Total Nodes:" ${#NODES[*]}
-}
-
-function eksOOMPods() {
-  k get pods | grep OOM | sort -k 3
-}
-
-function eksCheckPersistentCrons() {
-  CRONJOBS=$(k get cronjobs | grep "persistent-" | awk '{print $1}')
-  CRONJOBSLIST=($CRONJOBS)
-  echo "Checking" ${#CRONJOBSLIST[*]} "Cron Jobs"
-
-  for cronjob in $CRONJOBS; do
-    INUSE=$(kfind "${cronjob}-" | grep " Running " | wc -l)
-    if [ "$INUSE" != "1" ]; then
-      lastseen=$(kfind $cronjob | tail -1 | awk '{print $5}')
-      echo $cronjob "not running. last seen:" $lastseen "ago" 
-    fi
-  done	
-}
-
-function eksKillNode() {
-  NODE=$1
-  k drain --force --ignore-daemonsets --delete-local-data --grace-period=120 "$NODE";
-}
-
-function h() {
-  helm --tiller-namespace $EKS_ENV $*
-}
-
