@@ -4,6 +4,8 @@ alias json='python -mjson.tool'
 # git
 alias gl='git pull --prune'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+function glogmaster () { glog master...$(git describe --abbrev=0 --tags); }
+
 alias gp='git push origin HEAD'
 alias gd='git diff'
 alias ga='git add'
@@ -18,6 +20,7 @@ alias gr='git rebase'
 alias gt='git tag'
 alias gg='git grep -in'
 alias grr='git reset --hard HEAD && git clean -d -f .'
+
 
 # cross platform way to get your externally visible ip, even behind a router
 alias ipme='curl ifconfig.me/ip'
