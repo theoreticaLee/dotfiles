@@ -21,6 +21,11 @@ alias gt='git tag'
 alias gg='git grep -in'
 alias grr='git reset --hard HEAD && git clean -d -f .'
 
+# socks5 proxy
+function setupProxy() {
+  ssh -C2qTnN -D 8080 lee@lee
+  echo "edit chrome to use localhost as socks5 proxy"
+}
 
 # cross platform way to get your externally visible ip, even behind a router
 alias ipme='curl ifconfig.me/ip'
